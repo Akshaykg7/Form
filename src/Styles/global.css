@@ -1,0 +1,24 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+}
+
+body{
+    background: linear-gradient(rgb(165, 85, 158),rgb(223, 223, 68));
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: rgb(48, 46, 46);
+    
+}
+
+#root{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
