@@ -1,5 +1,8 @@
 import { useState } from "react";
 import "./App.css";
+import { TextInput } from "./Components/TextInput/TextInput";
+import { Radio } from "./Components/Radio/Radio";
+import { Select } from "./Components/Select/Select";
 
 function App() {
     const [fields, setFields] = useState({
@@ -122,55 +125,34 @@ function App() {
                 <h1>Register</h1>
                 <p className="caption">Please fill the form</p>
 
-                <div className="input-section">
-                    <label htmlFor="first-name">
-                        Fist Name <span className="danger">*</span>
-                    </label>
-                    <input
-                        type="text"
-                        name="firstName"
-                        id="first-name"
-                        onChange={handleChange}
-                        onBlur={isFormValidOnBlur}
-                    />
-                    {errorFields.firstName && <p className="danger">First Name is required</p>}
-                </div>
+                <TextInput
+                    id="first-name"
+                    name="firstName"
+                    type="text"
+                    label="First Name"
+                    handleChange={handleChange}
+                    isFormValidOnBlur={isFormValidOnBlur}
+                    errorFields={errorFields}
+                />
 
-                <div className="input-section">
-                    <label htmlFor="email">
-                        Email <span className="danger">*</span>
-                    </label>
-                    <input type="email" name="email" id="email" onChange={handleChange} onBlur={isFormValidOnBlur} />
-                    {errorFields.email && <p className="danger">Email Name is required</p>}
-                </div>
-                <div className="input-section radio-groups">
-                    <label htmlFor="">Gender</label>
-                    <div>
-                        <input
-                            type="radio"
-                            name="gender"
-                            id="male"
-                            value="male"
-                            onChange={handleChange}
-                            onBlur={isFormValidOnBlur}
-                        />
-                        <label htmlFor="male" className="radio-button">
-                            Male
-                        </label>
-                        <input
-                            type="radio"
-                            name="gender"
-                            id="female"
-                            value="female"
-                            onChange={handleChange}
-                            onBlur={isFormValidOnBlur}
-                        />
-                        <label htmlFor="female" className="radio-button">
-                            Female
-                        </label>
-                    </div>
-                    {errorFields.gender && <p className="danger">Gender Name is required</p>}
-                </div>
+                <TextInput
+                    id="email"
+                    name="email"
+                    type="email"
+                    label="Email"
+                    handleChange={handleChange}
+                    isFormValidOnBlur={isFormValidOnBlur}
+                    errorFields={errorFields}
+                />
+
+                <Radio
+                    type="radio"
+                    label="Gender"
+                    name="gender"
+                    handleChange={handleChange}
+                    isFormValidOnBlur={isFormValidOnBlur}
+                    errorFields={errorFields}
+                />
 
                 <div className="input-section">
                     <label htmlFor="date-of-birth">Date Of Birth</label>
@@ -183,22 +165,20 @@ function App() {
                             onBlur={isFormValidOnBlur}
                         />
                     </div>
-                    {errorFields.gender && <p className="danger">Date Of Birth is required</p>}
+                    {errorFields.dob && <p className="danger">Date Of Birth is required</p>}
                 </div>
 
-                <div className="input-section">
-                    <label htmlFor="country">Country</label>
-                    <select name="country" id="country" onChange={handleChange} onBlur={isFormValidOnBlur}>
-                        <option value="">Select</option>
-                        <option value="india">INDIA</option>
-                        <option value="uk">UK</option>
-                        <option value="uae">UAE</option>
-                    </select>
-                </div>
+                <Select 
+                    name="country"
+                    label="Country"
+                    handleChange={handleChange}
+                    isFormValidOnBlur={isFormValidOnBlur}
+                    errorFields={errorFields}
+                />
 
                 <div className="input-section checkbox">
                     <label htmlFor="">Skills</label>
-                    <div className="checkbox-skills">
+                    <div>
                         <input
                             type="checkbox"
                             name="skills"
